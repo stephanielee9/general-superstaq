@@ -5,3 +5,10 @@ body:
   - type: markdown
     attributes:
       value: Please make sure to browse the opened and closed issues to make sure that this idea has not previously been discussed.
+
+  - type: textarea
+    attributes:
+      label: What is happening?
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
