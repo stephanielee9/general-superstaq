@@ -1,0 +1,16 @@
+# Test file for automatic release after bumping version and deployment (full process)
+# Currently leaves out the deployments steps because will not want to test that
+
+name: full_deploy-and-release
+
+on: [push]
+
+jobs: # groups together all jobs in this workflow
+  check_version_update: # defines a job named check_version_update
+    runs-on: ubuntu-latest
+#   deploy_aws:
+#     needs: check_version_update # specifies dependency on previous job to run
+#     runs-on: ubuntu-latest
+  publish_release:
+    needs: deploy_aws
+    runs-on: ubuntu-latest
