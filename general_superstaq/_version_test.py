@@ -9,3 +9,5 @@ def test_version() -> None:
         < packaging.version.parse(gss.__version__)
         < packaging.version.Version("1.0.0")
     )
+
+# test comment
