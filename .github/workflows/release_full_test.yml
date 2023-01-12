@@ -11,18 +11,13 @@ on:
       - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
 
 jobs: # groups together all jobs in this workflow
-#   check_version_update: # defines a job named check_version_update
-#     runs-on: ubuntu-latest
-
-# #   deploy_aws:
-# #     needs: check_version_update # specifies dependency on previous job to run
-# #     runs-on: ubuntu-latest
-
-#   publish_release:
-#     needs: check_version_update # needs to be updated to deploy_aws eventually
-#     runs-on: ubuntu-latest
-    
-  greeting:
+  check_version_update: # defines a job named check_version_update
     runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello"
+
+#   deploy_aws:
+#     needs: check_version_update # specifies dependency on previous job to run
+#     runs-on: ubuntu-latest
+
+  publish_release:
+    needs: check_version_update # needs to be updated to deploy_aws eventually
+    runs-on: ubuntu-latest
