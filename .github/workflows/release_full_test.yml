@@ -27,6 +27,6 @@ jobs: # groups together all jobs in this workflow
     runs-on: ubuntu-latest
     steps:
       - name: Set date for release title
-        run: today=$(date +"%B %d, %Y") >> $GITHUB_ENV # format date and append to env
+        run: echo 'today=$(date +"%B %d, %Y")' >> $GITHUB_ENV # format date and append to env
       - name: Test
         run: echo "${{ env.today }}" # output date
