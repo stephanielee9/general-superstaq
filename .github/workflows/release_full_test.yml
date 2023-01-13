@@ -11,19 +11,19 @@ on:
       - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
 
 jobs: # groups together all jobs in this workflow
-  check_version_update: # defines a job named check_version_update
-    # not sure if we should add a needs: for the checks to run on main before this is triggered; 
-    # there have been times with unique timing of PRs merging where the version update checks would 
-    # fail merging into main but rare and maybe not significant?
-    # could possibly remove this job completely
-    runs-on: ubuntu-latest
+#   check_version_update: # defines a job named check_version_update
+#     # not sure if we should add a needs: for the checks to run on main before this is triggered; 
+#     # there have been times with unique timing of PRs merging where the version update checks would 
+#     # fail merging into main but rare and maybe not significant?
+#     # could possibly remove this job completely
+#     runs-on: ubuntu-latest
 
 #   deploy_aws:
 #     needs: check_version_update # specifies dependency on previous job to run
 #     runs-on: ubuntu-latest
 
   publish_release:
-    needs: check_version_update # needs to be updated to deploy_aws eventually
+#     needs: check_version_update # needs to be updated to deploy_aws eventually
     runs-on: ubuntu-latest
     steps:
       - name: Set date for release title
