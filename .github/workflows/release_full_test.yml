@@ -25,3 +25,8 @@ jobs: # groups together all jobs in this workflow
   publish_release:
     needs: check_version_update # needs to be updated to deploy_aws eventually
     runs-on: ubuntu-latest
+    steps:
+      - name: Set date for release title
+        run: today=$(date +"%B %d, %Y") >> $GITHUB_ENV # format date and append to env
+      - name: Test
+        run: echo "${{ env.today }}" # output date
