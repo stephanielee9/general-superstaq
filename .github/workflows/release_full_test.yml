@@ -40,5 +40,6 @@ jobs: # groups together all jobs in this workflow
           tag: v${{ env.version }}
           name: v${{ env.version }} ${{ env.today }} Release
           generateReleaseNotes: true
+          makeLatest: true
           
           
