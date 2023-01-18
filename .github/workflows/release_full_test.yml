@@ -30,7 +30,7 @@ jobs: # groups together all jobs in this workflow
       - name: Set date for release title
         run: echo 'today=$(date +"%B %d, %Y")' >> $GITHUB_ENV # format date and append to env
       - name: Test version extraction
-        run: |
-          echo 'version=$(cat general_superstaq/_version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
-          echo "${{ env.version }}"
+        run: echo 'version=$(cat general_superstaq/_version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
+      - name: Test version print
+        run: echo "${{ env.version }}"
           
