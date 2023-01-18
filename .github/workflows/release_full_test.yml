@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
+  workflow_dispatch: null # can also be triggered manually on Actions page
 
 jobs: # groups together all jobs in this workflow
 #   check_version_update: # defines a job named check_version_update
@@ -28,5 +29,8 @@ jobs: # groups together all jobs in this workflow
     steps:
       - name: Set date for release title
         run: echo 'today=$(date +"%B %d, %Y")' >> $GITHUB_ENV # format date and append to env
-      - name: Test
-        run: echo "${{ env.today }}" # output date
+      - name: Test version extraction
+        run: |
+          echo 'version=$(cat _version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
+          echo "${{ env.version }}"
+          
