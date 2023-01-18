@@ -34,6 +34,8 @@ jobs: # groups together all jobs in this workflow
         run: echo 'today=$(date +"%B %d, %Y")' >> $GITHUB_ENV # format date and append to env
       - name: Set version number to most recent change
         run: echo 'version=$(cat general_superstaq/_version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
+      - name: Test version number
+        run: echo ${{ env.version}}
       - name: Create and Publish release
         uses: ncipollo/release-action@v1
         with:
