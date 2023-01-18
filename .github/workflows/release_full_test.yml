@@ -27,11 +27,9 @@ jobs: # groups together all jobs in this workflow
 #     needs: check_version_update # needs to be updated to deploy_aws eventually
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3 # allows workflow to access repo
       - name: Set date for release title
         run: echo 'today=$(date +"%B %d, %Y")' >> $GITHUB_ENV # format date and append to env
-      - name: Test version extraction
+      - name: Set version number to most recent change
         run: echo 'version=$(cat general_superstaq/_version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
-      - name: Test version print
-        run: echo "${{ env.version }}"
           
