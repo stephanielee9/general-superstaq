@@ -35,11 +35,11 @@ jobs: # groups together all jobs in this workflow
       - name: Set version number to most recent change
         run: echo 'version=$(cat general_superstaq/_version.py | grep -oP '[0-9\.]+')' >> $GITHUB_ENV
       - name: Output version number
-        run: echo ${{ env.version}}
+        run: echo $version
       - name: Create and Publish release
         uses: ncipollo/release-action@v1
         with:
-          tag: "v0.0.3"
+          tag: "v0.0.5"
           name: ${{ env.version }}--server
           generateReleaseNotes: true
           
