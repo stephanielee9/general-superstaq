@@ -39,7 +39,7 @@ jobs: # groups together all jobs in this workflow
       - name: Create and Publish release
         uses: ncipollo/release-action@v1
         with:
-          tag: "v0.0.2"
+          tag: "v0.0.3"
           name: ${{ env.version }}--server
           generateReleaseNotes: true
           
