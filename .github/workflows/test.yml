@@ -12,8 +12,20 @@ on:
         default: true
         
 jobs:
-  hello-world:
+  run_checks:
     runs-on: ubuntu-latest
-    if: ${{ inputs.dispatch != true }}
+    if: ${{ !inputs.dispatch }}
     steps:
-      - run: echo 'hello world'
+      - run: echo 'checks are running'
+        id: run_checks
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ (steps.run_checks.outcome == 'success') || (inputs.dispatch) }}
+    steps:
+      - run: echo 'deployed!'
+        id: deploy
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ (steps.deploy.outcome == 'success') }}
+    steps:
+      - run: echo 'release published'
