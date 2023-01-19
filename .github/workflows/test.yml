@@ -18,10 +18,12 @@ jobs:
     steps:
       - run: echo 'checks are running'
         id: run_checks
+      - if: success()
+        run: echo checks_pass=$true >> $GITHUB_ENV
   deploy:
     runs-on: ubuntu-latest
     needs: run_checks
-    if: ${{ (contains(needs.*.result, 'success')) || (inputs.dispatch) }}
+    if: ${{ (env.checks_pass) || (inputs.dispatch) }}
     steps:
       - run: echo 'deployed!'
         id: deploy
