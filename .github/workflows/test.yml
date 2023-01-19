@@ -19,7 +19,7 @@ jobs:
       - run: echo 'checks are running'
         id: run_checks
       - if: success()
-        run: echo pass=$true >> $GITHUB_ENV
+        run: echo pass=$"true" >> $GITHUB_ENV
       - run: echo '${{ env.pass }}'
   deploy:
     runs-on: ubuntu-latest
