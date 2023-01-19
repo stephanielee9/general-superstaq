@@ -1,4 +1,4 @@
-name: test control flow
+name: "Test Control Flow"
 
 on:
   push:
@@ -8,5 +8,12 @@ on:
     inputs:
       dispatch: # name of input
         required: true
-        default: "true"
+        type: boolean
+        default: true
         
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.default != true }}
+    steps:
+      - run: echo 'hello world'
