@@ -1,0 +1,12 @@
+name: test control flow
+
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch: 
+    inputs:
+      dispatch: # name of input
+        required: true
+        default: "true"
+        
