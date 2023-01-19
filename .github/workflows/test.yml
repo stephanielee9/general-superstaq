@@ -23,7 +23,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: run_checks
-    if: ${{ (env.pass) }} || (inputs.dispatch)
+    if: ${{ env.pass == 'true' }} # || (inputs.dispatch)
     steps:
       - run: echo 'deployed!'
         id: deploy
