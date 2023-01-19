@@ -9,7 +9,15 @@ on:
       - main
     paths:
       - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
-  workflow_dispatch: null # can also be triggered manually on Actions page
+  workflow_dispatch: # allows workflow to be triggered manually 
+    inputs:
+      dispatch: # name of input
+        required: true
+        type: boolean
+        default: true # if we manually run the workflow, the value will be true (unless someone manually unchecks the box)
+                      # otherwise this value is false
+                      # thus, we can use this input to automatically trigger checks with updates to _version.py
+                      # if we manually trigger, input will be false, and checks aren't triggered
 
 jobs: # groups together all jobs in this workflow
 #   check_version_update: # defines a job named check_version_update
