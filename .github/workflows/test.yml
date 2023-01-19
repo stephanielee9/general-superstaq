@@ -14,6 +14,6 @@ on:
 jobs:
   hello-world:
     runs-on: ubuntu-latest
-    if: ${{ inputs.default != true }}
+    if: ${{ inputs.dispatch != true }}
     steps:
       - run: echo 'hello world'
