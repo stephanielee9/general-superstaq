@@ -20,12 +20,13 @@ jobs:
         id: run_checks
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ (steps.run_checks.outcome == 'success') || (inputs.dispatch) }}
+    needs: run_checks
+    if: ${{ (needs.run_checks.outcome == 'success') || (inputs.dispatch) }}
     steps:
       - run: echo 'deployed!'
         id: deploy
   release:
     runs-on: ubuntu-latest
-    if: ${{ (steps.deploy.outcome == 'success') }}
+    needs: deploy
     steps:
       - run: echo 'release published'
