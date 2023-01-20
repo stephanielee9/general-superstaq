@@ -26,7 +26,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: run_checks
-    if: (run_checks.outputs.success_outcome == "success") || (inputs.dispatch)
+    if: (needs.run_checks.outputs.success_outcome == "success") || (inputs.dispatch)
     steps:
       - run: echo 'deployed!'
         id: deploy
