@@ -12,5 +12,6 @@ jobs:
       - run: echo 'checks are running'
   deploy_and_release:
     needs: run_checks
+    if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/test2.yml
     
