@@ -4,11 +4,12 @@
 name: full_deploy-and-release
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'general_superstaq/_version.py' # either update for each repo or change to general '**/_version.py'
+  workflow_call:
   workflow_dispatch: # allows workflow to be triggered manually 
     inputs:
       dispatch: # name of input
@@ -46,7 +47,7 @@ jobs: # groups together all jobs in this workflow
         uses: ncipollo/release-action@v1
         with:
           tag: v${{ env.version }}
-          commit: ${{ env.GITHUB_SHA }}
+          commit: ${{ github.sha }}
           name: v${{ env.version }} ${{ env.today }} Release
           generateReleaseNotes: true
           makeLatest: true
