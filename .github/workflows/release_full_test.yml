@@ -46,7 +46,7 @@ jobs: # groups together all jobs in this workflow
         uses: ncipollo/release-action@v1
         with:
           tag: v${{ env.version }}
-          commit: ${{ GITHUB_SHA }}
+          commit: ${ GITHUB_SHA }
           name: v${{ env.version }} ${{ env.today }} Release
           generateReleaseNotes: true
           makeLatest: true
